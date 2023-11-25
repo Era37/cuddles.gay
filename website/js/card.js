@@ -28,7 +28,7 @@ function buildCards() {
   for (const card of cards) {
     const { title, description, thumbnail, bgColour, textColour, url } = card;
     const cardContent = `
-    <a class="card" href="${url}" target="_blank">
+    <a class="card" target="_blank" href="${url}">
       <div
         class="card-design bg-pink"
         style="color: ${textColour}; background-color: ${bgColour}"
@@ -63,7 +63,7 @@ function buildCards() {
           </p>
         </div>
       </div>
-    </a>`;
+    </div>`;
     hiddenContent.insertAdjacentHTML("beforeend", cardContent);
   }
 }

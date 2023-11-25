@@ -40,10 +40,12 @@ async function loadPhrases() {
   }
 }
 
-function expandBox(ev) {
-  function unhide() {
+async function expandBox(ev) {
+  async function unhide() {
     const hiddenContent = $("hidden-content");
     hiddenContent.style.opacity = boxRetracted ? "100%" : "0%";
+    await sleep(30);
+    hiddenContent.style.visibility = boxRetracted ? "visible" : "hidden";
   }
   const box = $("box");
   const boxRetracted = box.offsetHeight == 320;

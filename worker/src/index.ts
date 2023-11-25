@@ -6,6 +6,9 @@ const CONTENT = `PGh0bWw+CiAgPGhlYWQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+		if (/*!request.url.includes('127.0.0.1') && */ request.url != 'http://127.0.0.1:8787/') {
+			return new Response('404', { status: 404 });
+		}
 		return new Response(Buffer.from(CONTENT, 'base64').toString('utf8'), {
 			headers: { 'Content-Type': 'text/html;charset=UTF8' },
 		});
