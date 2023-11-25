@@ -6,7 +6,8 @@ const CONTENT = `PGh0bWw+CiAgPGhlYWQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		if (!request.url.includes('127.0.0.1') && request.url != 'https://cuddles.gay/') {
+		const domains = ['https://osa-is.online/', 'https://cuddles.gay/'];
+		if (!request.url.includes('127.0.0.1') && !domains.includes(request.url)) {
 			return new Response('404', { status: 404 });
 		}
 		return new Response(Buffer.from(CONTENT, 'base64').toString('utf8'), {
