@@ -19,9 +19,7 @@ function implantString(data) {
   const fileDir = "./worker/src/index.ts";
   let workerCode = readFileSync(fileDir).toString();
   const matched = workerCode.match(/`(.*?);/g);
-  console.log(matched);
   const capturedString = matched ? matched[0].slice(1) : null;
-  console.log(capturedString);
   if (!capturedString)
     throw new Error("Could not find valid place to install code");
   workerCode = workerCode.replace(
